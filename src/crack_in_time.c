@@ -22,24 +22,22 @@ static TextLayer *date_layer;
 
 static void handle_battery(BatteryChargeState charge_state) {
 
-
-
   if (charge_state.is_charging) {
-  	bitmap_layer_set_bitmap(battery_layer,battery_charging);
+    bitmap_layer_set_bitmap(battery_layer,battery_charging);
   } else if(charge_state.charge_percent < 20) {
     bitmap_layer_set_bitmap(battery_layer,battery_empty);
   } else if(charge_state.charge_percent < 34){
-	  bitmap_layer_set_bitmap(battery_layer,battery_c2);
+    bitmap_layer_set_bitmap(battery_layer,battery_c2);
   } else if(charge_state.charge_percent < 48){
     bitmap_layer_set_bitmap(battery_layer,battery_c3);
-	} else if(charge_state.charge_percent < 62){
-		bitmap_layer_set_bitmap(battery_layer,battery_c4);
-	} else if(charge_state.charge_percent < 76){
-		bitmap_layer_set_bitmap(battery_layer,battery_c5);
-	} else if(charge_state.charge_percent < 90){
-		bitmap_layer_set_bitmap(battery_layer,battery_c6);
-	} else {
-		bitmap_layer_set_bitmap(battery_layer,battery_full);
+  } else if(charge_state.charge_percent < 62){
+    bitmap_layer_set_bitmap(battery_layer,battery_c4);
+  } else if(charge_state.charge_percent < 76){
+    bitmap_layer_set_bitmap(battery_layer,battery_c5);
+  } else if(charge_state.charge_percent < 90){
+    bitmap_layer_set_bitmap(battery_layer,battery_c6);
+  } else {
+    bitmap_layer_set_bitmap(battery_layer,battery_full);
   }
 }
 
@@ -61,12 +59,12 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-	background_layer = bitmap_layer_create(bounds);
-	bitmap_layer_set_bitmap(background_layer,background);
-	layer_add_child(window_layer,bitmap_layer_get_layer(background_layer));
+  background_layer = bitmap_layer_create(bounds);
+  bitmap_layer_set_bitmap(background_layer,background);
+  layer_add_child(window_layer,bitmap_layer_get_layer(background_layer));
 
-	battery_layer = bitmap_layer_create((GRect) {.origin = {bounds.size.w - 18 ,2}, .size = {16,16}});
-	layer_add_child(window_layer,bitmap_layer_get_layer(battery_layer));
+  battery_layer = bitmap_layer_create((GRect) {.origin = {bounds.size.w - 18 ,2}, .size = {16,16}});
+  layer_add_child(window_layer,bitmap_layer_get_layer(battery_layer));
 
   time_layer = text_layer_create((GRect) { .origin = { 0, 78-34 }, .size = { bounds.size.w, 34 } });
   text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
@@ -85,7 +83,7 @@ static void window_load(Window *window) {
   handle_minute_tick(current_time, MINUTE_UNIT);
   tick_timer_service_subscribe(MINUTE_UNIT, &handle_minute_tick);
 
-	layer_add_child(window_layer,text_layer_get_layer(date_layer));
+  layer_add_child(window_layer,text_layer_get_layer(date_layer));
   layer_add_child(window_layer, text_layer_get_layer(time_layer));
 }
 
@@ -97,16 +95,16 @@ static void window_unload(Window *window) {
 }
 
 static void init(void) {
-	background = gbitmap_create_with_resource(RESOURCE_ID_BACKGROUND);
-	battery_empty = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_EMPTY);
-	battery_c2 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C2);
-	battery_c3 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C3);
+  background = gbitmap_create_with_resource(RESOURCE_ID_BACKGROUND);
+  battery_empty = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_EMPTY);
+  battery_c2 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C2);
+  battery_c3 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C3);
   battery_c4 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C4);
   battery_c5 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C5);
   battery_c6 = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_C6);
 
-	battery_full = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_FULL);
-	battery_charging = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_CHARGING);
+  battery_full = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_FULL);
+  battery_charging = gbitmap_create_with_resource(RESOURCE_ID_BATTERY_CHARGING);
 
   window = window_create();
   //window_set_click_config_provider(window, click_config_provider);
@@ -116,10 +114,6 @@ static void init(void) {
   });
   const bool animated = true;
   window_stack_push(window, animated);
-
-
-
-
 }
 
 static void deinit(void) {
