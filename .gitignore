@@ -1,3 +1,6 @@
 
 # Ignore build generated files
 build
+.idea
+.DS_Store
+.lock-waf_darwin_build
