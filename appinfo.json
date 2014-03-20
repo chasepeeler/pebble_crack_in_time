@@ -1,64 +1,66 @@
 {
-  "uuid": "13371337-4b45-4254-ad24-662d24997cf5",
-  "shortName": "DOCTOR WHO - CRACK IN TIME",
-  "longName": "DOCTOR WHO - CRACK IN TIME",
-  "companyName": "Peeler Coding, LLC",
-  "versionCode": 2,
-  "versionLabel": "1.1.0",
-  "watchapp": {
-    "watchface": true
-  },
-  "appKeys": {
-    "dummy": 0
-  },
-	"resources": {
-		"media": [
-			{
-				"type": "png",
-				"name": "BACKGROUND",
-				"file": "images/crack.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_EMPTY",
-				"file": "images/empty.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_C2",
-				"file": "images/charge2.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_C3",
-				"file": "images/charge3.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_C4",
-				"file": "images/charge4.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_C5",
-				"file": "images/charge5.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_C6",
-				"file": "images/charge6.png"
-			},
-
-			{
-				"type": "png",
-				"name": "BATTERY_FULL",
-				"file": "images/full.png"
-			},
-			{
-				"type": "png",
-				"name": "BATTERY_CHARGING",
-				"file": "images/charging.png"
-			}
-		]
-	}
+    "versionLabel": "1.1.0",
+    "uuid": "13371337-4b45-4254-ad24-662d24997cf5",
+    "appKeys": {
+        "dummy": 0
+    },
+    "longName": "DOCTOR WHO - CRACK IN TIME",
+    "versionCode": 2,
+    "capabilities": [
+        "configurable"
+    ],
+    "shortName": "DOCTOR WHO - CRACK IN TIME",
+    "companyName": "Peeler Coding, LLC",
+    "watchapp": {
+        "watchface": true
+    },
+    "resources": {
+        "media": [
+            {
+                "type": "png",
+                "name": "BATTERY_CHARGING",
+                "file": "images/charging.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_FULL",
+                "file": "images/full.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_C6",
+                "file": "images/charge6.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_C5",
+                "file": "images/charge5.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_C4",
+                "file": "images/charge4.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_C3",
+                "file": "images/charge3.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_C2",
+                "file": "images/charge2.png"
+            },
+            {
+                "type": "png",
+                "name": "BATTERY_EMPTY",
+                "file": "images/empty.png"
+            },
+            {
+                "type": "png",
+                "name": "BACKGROUND",
+                "file": "images/crack.png"
+            }
+        ]
+    }
 }
