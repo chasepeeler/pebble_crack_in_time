@@ -9,6 +9,9 @@ static TextLayer *time_layer;
 //where we will display the date
 static TextLayer *date_layer;
 
+//where we will display the weekday
+static TextLayer *day_layer;
+
 //where our crack in time background image will go
 static BitmapLayer *background_layer;
 
@@ -82,6 +85,10 @@ static void handle_minute_tick(struct tm* tick_time, TimeUnits units_changed) {
   strftime(date_text,sizeof(date_text),"%m/%d",tick_time);
   text_layer_set_text(date_layer,date_text);
   
+  static char day_text[] = "Mon";
+  strftime(day_text,sizeof(day_text),"%a",tick_time);
+  text_layer_set_text(day_layer,day_text);
+  
   //poll and update the battery icon
   //once a minute should give us more than enough
   //feedback on the battery state
@@ -130,6 +137,12 @@ static void window_load(Window *window) {
   text_layer_set_text_color(date_layer, GColorWhite);
   text_layer_set_background_color(date_layer, GColorClear);
   text_layer_set_font(date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+  
+  day_layer = text_layer_create((GRect) { .origin = { 0, bounds.size.h-24-2 }, .size = { bounds.size.w, 30} });
+  text_layer_set_text_alignment(day_layer, GTextAlignmentLeft);
+  text_layer_set_text_color(day_layer, GColorWhite);
+  text_layer_set_background_color(day_layer, GColorClear);
+  text_layer_set_font(day_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
 
   //this will actually trigger our first tick with the current time
   time_t now = time(NULL);
@@ -142,12 +155,15 @@ static void window_load(Window *window) {
   //finally, we add our date and time layers
   layer_add_child(window_layer,text_layer_get_layer(date_layer));
   layer_add_child(window_layer, text_layer_get_layer(time_layer));
+  layer_add_child(window_layer, text_layer_get_layer(day_layer));
+
 }
 
 static void window_unload(Window *window) {
   //destroy all of our layers
   text_layer_destroy(time_layer);
   text_layer_destroy(date_layer);
+  text_layer_destroy(day_layer);
   bitmap_layer_destroy(background_layer);
   bitmap_layer_destroy(battery_layer);
 }
